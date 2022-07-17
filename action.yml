@@ -1,0 +1,18 @@
+name: "Deploy container"
+description: "Deploys container"
+branding:
+  icon: activity
+  color: orange
+inputs:
+  secret:
+    description: "Project secret to authenticate deploy"
+    required: true
+  image:
+    description: "Image to deploy"
+    required: true
+  deployment_server:
+    description: "URL to server that will perform deployment"
+    required: true
+runs:
+  using: "node16"
+  main: "dist/index.cjs"

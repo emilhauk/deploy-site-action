@@ -1,0 +1,30 @@
+{
+  "name": "deploy-site-action",
+  "version": "0.0.1",
+  "description": "Deploy site action",
+  "export": {
+    ".": "index.js",
+    "default": "index.js"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "esbuild index.js --bundle --platform=node --outfile=dist/index.cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emilhauk/deploy-site-action.git"
+  },
+  "author": "Emil Haukeland <emil.haukeland@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/emilhauk/deploy-site-action/issues"
+  },
+  "homepage": "https://github.com/emilhauk/deploy-site-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.9.0",
+    "node-fetch": "^3.2.9"
+  },
+  "devDependencies": {
+    "esbuild": "^0.14.49"
+  }
+}
