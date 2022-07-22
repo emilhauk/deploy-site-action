@@ -6,19 +6,23 @@ const server = core.getInput('deployment_server');
 const secret = core.getInput('secret');
 core.setSecret(secret);
 
-fetch(server, {
-  method: 'POST',
-  headers: {
-    'Authorization': secret,
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    image
-  })
-})
-    .then(() => {
-      core.info("Deploy started")
+async function run () {
+    return fetch(server, {
+        method: 'POST',
+        headers: {
+            'Authorization': secret,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            image
+        })
     })
-    .catch((error) => {
-      core.setFailed(error)
-    });
+        .then(() => {
+            core.info("Deploy started")
+        })
+        .catch((error) => {
+            core.setFailed(error)
+        });
+}
+
+run();

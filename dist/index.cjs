@@ -7195,20 +7195,23 @@ var image = import_core.default.getInput("image");
 var server = import_core.default.getInput("deployment_server");
 var secret = import_core.default.getInput("secret");
 import_core.default.setSecret(secret);
-fetch(server, {
-  method: "POST",
-  headers: {
-    "Authorization": secret,
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    image
-  })
-}).then(() => {
-  import_core.default.info("Deploy started");
-}).catch((error) => {
-  import_core.default.setFailed(error);
-});
+async function run() {
+  return fetch(server, {
+    method: "POST",
+    headers: {
+      "Authorization": secret,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      image
+    })
+  }).then(() => {
+    import_core.default.info("Deploy started");
+  }).catch((error) => {
+    import_core.default.setFailed(error);
+  });
+}
+run();
 /*! fetch-blob. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
 /*! formdata-polyfill. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
 /*! node-domexception. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
